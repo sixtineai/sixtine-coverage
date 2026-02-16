@@ -177,7 +177,7 @@ export default {
 
 .source-view {
     overflow: auto;
-    max-height: calc(100vh - 240px);
+    max-height: calc(100vh - 160px);
 }
 
 .block-mode-toggle {
@@ -238,7 +238,7 @@ export default {
     font-size: 13px;
     line-height: 1.7;
     border-radius: var(--radius);
-    overflow: hidden;
+    overflow: scroll;
     border: 1px solid var(--border);
 }
 

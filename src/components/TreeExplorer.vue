@@ -87,7 +87,7 @@ export default {
 <style scoped>
 .explorer-layout {
     display: flex;
-    height: calc(100vh - 62px);
+    height: calc(100vh - 49px);
 }
 
 .tree-nodes {
@@ -100,9 +100,9 @@ export default {
     border-right: 1px solid var(--border);
     background: var(--card-bg);
     overflow-y: auto;
-    max-height: calc(100vh - 130px);
+    max-height: calc(100vh - 50px);
     position: sticky;
-    top: 62px;
+    top: 49px;
 }
 
 .tree-content {
