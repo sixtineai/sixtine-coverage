@@ -48,6 +48,21 @@
                         <div class="summary-detail">
                             {{ coverData.totalCoveredStatements }}/{{ coverData.totalStatements }} statements
                         </div>
+                        <template v-if="routeData">
+                            <div class="summary-row">
+                                <span class="summary-label">Route Coverage</span>
+                                <span class="summary-value"
+                                    :style="{ color: covColor(routeData.coveragePercent) }">{{
+                                        routeData.coveragePercent.toFixed(1) }}%</span>
+                            </div>
+                            <div class="progress-bar summary-progress">
+                                <div class="fill" :class="covClass(routeData.coveragePercent)"
+                                    :style="{ width: routeData.coveragePercent + '%' }"></div>
+                            </div>
+                            <div class="summary-detail">
+                                {{ routeData.coveredRoutes }}/{{ routeData.totalRoutes }} routes
+                            </div>
+                        </template>
                     </div>
                 </div>
                 <div class="nav-section">
