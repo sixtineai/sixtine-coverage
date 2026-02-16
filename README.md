@@ -17,7 +17,11 @@ sixtine-coverage -coverage cover.out -codebase . -out coverage.html
 
 ## Demo
 
-- Open the bundled demo report: [docs/demo-report.html](docs/demo-report.html)
+- Open the bundled demo report: [Demo report](https://sixtineai.github.io/sixtine-coverage/demo-report.html)
+
+## Docs
+
+[Documentation](https://sixtineai.github.io/sixtine-coverage/)
 
 ## Screenshots
 
