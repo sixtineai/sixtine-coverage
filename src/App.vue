@@ -100,6 +100,7 @@
 import { covClass, covColor, findTreeNode, parseCoverProfile, buildCoverData } from '@/utils/coverage'
 import { parseRouteCoverage } from '@/utils/routeCoverage'
 import { resolveInlineCoverage, resolveInlineRouteCoverage } from '@/utils/data'
+import { setFavicon } from '@/utils/favicon'
 import config from '@/config'
 import ConfigScreen from '@/components/ConfigScreen.vue'
 import DashboardView from '@/components/DashboardView.vue'
@@ -185,6 +186,7 @@ export default {
         },
     },
     mounted() {
+        setFavicon(null)
         if (this.autoLoad) {
             this.$nextTick(() => {
                 this.autoLoadProfile()
@@ -213,6 +215,7 @@ export default {
                 this.coverData = coverData
                 this.loaded = true
                 this.view = 'dashboard'
+                setFavicon(coverData.totalCoverage)
 
                 const inlineRouteData = await resolveInlineRouteCoverage()
                 if (inlineRouteData) {
@@ -239,6 +242,7 @@ export default {
             this.profileUrl = profileUrl
             this.sourceRoot = sourceRoot
             this.modulePrefix = modulePrefix
+            setFavicon(coverData.totalCoverage)
             if (routeCoverageUrl) {
                 this.routeCoverageUrl = routeCoverageUrl
                 this.loadRouteCoverage()
