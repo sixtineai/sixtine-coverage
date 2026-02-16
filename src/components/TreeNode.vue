@@ -11,7 +11,8 @@
         </div>
         <div v-if="isFolder && expanded" class="tree-children">
             <TreeNode v-for="child in filteredChildren" :key="child.name" :node="child" :depth="depth + 1"
-                :selected-path="selectedPath" @select="onChildSelect" />
+                :selected-path="selectedPath" :reveal-path="revealPath" :expand-command="expandCommand"
+                @select="onChildSelect" />
         </div>
     </div>
 </template>
@@ -25,12 +26,31 @@ export default {
         node: { type: Object, required: true },
         depth: { type: Number, default: 0 },
         selectedPath: { type: String, default: '' },
+        revealPath: { type: String, default: '' },
+        expandCommand: { type: Object, default: null },
     },
     emits: ['select'],
     data() {
         return {
             expanded: this.depth < 1,
         }
+    },
+    created() {
+        if (this.revealPath && this.node.type === 'folder' && this.node.path
+            && this.revealPath.startsWith(this.node.path + '/')) {
+            this.expanded = true
+        }
+    },
+    watch: {
+        revealPath(path) {
+            if (path && this.isFolder && this.node.path && path.startsWith(this.node.path + '/')) {
+                this.expanded = true
+            }
+        },
+        expandCommand(cmd) {
+            if (!cmd || !this.isFolder) return
+            this.expanded = cmd.action === 'expand'
+        },
     },
     computed: {
         isFolder() {

@@ -3,10 +3,17 @@
         <div class="tree-panel">
             <div class="tree-search">
                 <input v-model="treeSearch" placeholder="Filter files...">
+                <button class="tree-action-btn" @click="expandAll" title="Expand All">
+                    <span class="material-icons-round">unfold_more</span>
+                </button>
+                <button class="tree-action-btn" @click="collapseAll" title="Collapse All">
+                    <span class="material-icons-round">unfold_less</span>
+                </button>
             </div>
             <div class="tree-nodes">
                 <TreeNode v-for="child in filteredTree" :key="child.name" :node="child" :depth="0"
-                    :selected-path="selectedPath" @select="onTreeSelect" />
+                    :selected-path="selectedPath" :reveal-path="revealPath" :expand-command="expandCommand"
+                    @select="onTreeSelect" />
             </div>
         </div>
         <div class="tree-content">
@@ -42,6 +49,9 @@ export default {
             selectedFile: null,
             selectedFolder: null,
             currentView: 'tree', // 'tree' | 'folder' | 'filecov'
+            revealPath: '',
+            expandCommand: null,
+            expandVersion: 0,
         }
     },
     computed: {
@@ -77,8 +87,17 @@ export default {
         onOpenFile(file) {
             this.selectedFile = file
             this.selectedPath = file.relativePath || file.path
+            this.revealPath = this.selectedPath
             this.currentView = 'filecov'
             this.$emit('view-change', { view: 'filecov', file })
+        },
+        expandAll() {
+            this.expandVersion++
+            this.expandCommand = { action: 'expand', version: this.expandVersion }
+        },
+        collapseAll() {
+            this.expandVersion++
+            this.expandCommand = { action: 'collapse', version: this.expandVersion }
         },
     },
 }
@@ -114,10 +133,14 @@ export default {
 .tree-search {
     padding: 10px;
     border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .tree-search input {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
     padding: 7px 10px;
     border: 1px solid var(--border);
     border-radius: 6px;
@@ -130,6 +153,30 @@ export default {
 .tree-search input:focus {
     border-color: var(--teal);
     box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+}
+
+.tree-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #f8fafc;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.tree-action-btn:hover {
+    background: #e2e8f0;
+    color: var(--text-primary);
+}
+
+.tree-action-btn .material-icons-round {
+    font-size: 16px;
 }
 
 @media (max-width: 768px) {
