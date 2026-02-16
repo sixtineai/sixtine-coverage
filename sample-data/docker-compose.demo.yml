@@ -1,0 +1,13 @@
+services:
+  coverage:
+    image: ghcr.io/sixtineai/sixtine-coverage:latest
+    ports:
+      - "8088:80"
+    volumes:
+      - ./demo-cover.out:/data/coverage/cover.out:ro
+      - ./demo-route-coverage.rcov:/data/coverage/route-coverage.rcov:ro
+      - ./demo-source:/data/code:ro
+    environment:
+      SIXTINEAI_COVERAGE_URL: /data/coverage/cover.out
+      SIXTINEAI_SOURCE_ROOT: /data/code/
+      SIXTINEAI_ROUTE_COVERAGE_URL: /data/coverage/route-coverage.rcov
