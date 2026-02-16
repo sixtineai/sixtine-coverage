@@ -414,4 +414,35 @@ export default {
 .uncovered-row td {
     opacity: 0.75;
 }
+
+@media (max-width: 768px) {
+    .table-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .col-service,
+    .col-status {
+        display: none;
+    }
+
+    .data-table td:nth-child(3),
+    .data-table th:nth-child(3),
+    .data-table td:nth-child(5),
+    .data-table th:nth-child(5) {
+        display: none;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-bar {
+        flex-wrap: wrap;
+    }
+
+    .route-select {
+        width: 100%;
+    }
+}
 </style>

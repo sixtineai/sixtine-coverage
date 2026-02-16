@@ -97,4 +97,27 @@ export default {
 .col-statements {
     width: 130px;
 }
+
+@media (max-width: 768px) {
+    .table-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .col-progress,
+    .col-statements {
+        display: none;
+    }
+
+    .data-table td:nth-child(3),
+    .data-table th:nth-child(3),
+    .data-table td:nth-child(4),
+    .data-table th:nth-child(4) {
+        display: none;
+    }
+
+    .folder-stats {
+        grid-template-columns: 1fr;
+    }
+}
 </style>

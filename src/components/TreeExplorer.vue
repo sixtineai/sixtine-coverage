@@ -131,4 +131,24 @@ export default {
     border-color: var(--teal);
     box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
 }
+
+@media (max-width: 768px) {
+    .explorer-layout {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .tree-panel {
+        width: 100%;
+        min-width: 0;
+        max-height: 260px;
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .tree-content {
+        padding: 16px 14px;
+    }
+}
 </style>

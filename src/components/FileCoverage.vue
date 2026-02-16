@@ -335,4 +335,44 @@ export default {
     font-weight: 600;
     font-size: 12px;
 }
+
+@media (max-width: 768px) {
+    .source-view,
+    .visual-map {
+        max-height: none;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .file-cov-line .line-gutter {
+        width: 40px;
+        padding: 0 6px;
+        font-size: 11px;
+    }
+
+    .file-cov-line .line-code {
+        padding: 0 8px;
+        font-size: 12px;
+    }
+
+    .block-item {
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 8px 12px;
+    }
+
+    .block-item .block-lines {
+        min-width: unset;
+    }
+
+    .block-item .block-hits {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .legend {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
 </style>

@@ -6,7 +6,7 @@
     <!-- Main App -->
     <template v-else>
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" :class="{ open: sidebarOpen }">
             <div class="sidebar-header">
                 <div class="logo">Go</div>
                 <div>
@@ -77,13 +77,21 @@
             </div>
         </aside>
 
+        <!-- Mobile overlay -->
+        <div class="sidebar-overlay" :class="{ visible: sidebarOpen }" @click="sidebarOpen = false"></div>
+
         <!-- Main Content -->
         <div class="main">
             <div class="topbar">
-                <h2>
-                    <span class="material-icons-round">{{ viewIcon }}</span>
-                    {{ viewTitle }}
-                </h2>
+                <div class="topbar-left">
+                    <button class="burger-btn" @click="sidebarOpen = !sidebarOpen">
+                        <span class="material-icons-round">menu</span>
+                    </button>
+                    <h2>
+                        <span class="material-icons-round">{{ viewIcon }}</span>
+                        {{ viewTitle }}
+                    </h2>
+                </div>
                 <div class="breadcrumb" v-if="breadcrumb.length > 0">
                     <a @click="navigate('dashboard')">Home</a>
                     <template v-for="(b, i) in breadcrumb" :key="i">
@@ -129,6 +137,7 @@ export default {
     data() {
         return {
             loaded: false,
+            sidebarOpen: false,
             profileUrl: config.coverageUrl,
             sourceRoot: config.sourceRoot,
             modulePrefix: config.modulePrefix,
@@ -269,6 +278,7 @@ export default {
             history.replaceState(this.getViewState(), '', '')
         },
         navigate(view) {
+            this.sidebarOpen = false
             this.view = view
             this.explorerInitPath = ''
             this.explorerSelectedFile = null
@@ -536,5 +546,79 @@ export default {
 .breadcrumb-current {
     color: var(--text-primary);
     font-weight: 500;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.burger-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.burger-btn:hover {
+    background: #f1f5f9;
+}
+
+.burger-btn .material-icons-round {
+    font-size: 22px;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.sidebar-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .burger-btn {
+        display: flex;
+    }
+
+    .sidebar-overlay {
+        display: block;
+    }
+
+    .topbar {
+        padding: 12px 16px;
+    }
+
+    .breadcrumb {
+        display: none;
+    }
 }
 </style>
