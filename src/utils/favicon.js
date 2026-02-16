@@ -19,7 +19,7 @@ function generateFaviconSVG(percentage) {
     const num = Math.round(percentage)
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="6" fill="${color}"/>
-  <text x="16" y="16" text-anchor="middle" dominant-baseline="central"
+  <text x="15.5" y="15.5" text-anchor="middle" dominant-baseline="central"
     font-family="Inter,system-ui,sans-serif" font-weight="800"
     font-size="24" fill="#fff">${num}</text>
 </svg>`

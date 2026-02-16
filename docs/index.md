@@ -50,7 +50,7 @@ It works great for local development, CI artifacts, and review workflows.
 
 ```bash
 go test -coverprofile=cover.out ./...
-go install github.com/sixtineai/sixtine-coverage
+go install github.com/sixtineai/sixtine-coverage@latest
 sixtine-coverage -coverage cover.out -codebase . -out coverage.html
 ```
 

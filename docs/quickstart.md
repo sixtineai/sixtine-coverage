@@ -11,7 +11,7 @@ See the bundled interactive demo report: [demo-report.html](demo-report.html)
 ## Install
 
 ```bash
-go install github.com/sixtineai/sixtine-coverage
+go install github.com/sixtineai/sixtine-coverage@latest
 ```
 
 ## Generate report

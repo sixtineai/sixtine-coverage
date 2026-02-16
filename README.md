@@ -6,7 +6,7 @@ A self-contained, interactive Go coverage dashboard. Feed it a `cover.out` file 
 
 ```bash
 # install
-go install github.com/sixtineai/sixtine-coverage
+go install github.com/sixtineai/sixtine-coverage@latest
 
 # generate coverage report in your go project
 go test -coverprofile=cover.out ./...

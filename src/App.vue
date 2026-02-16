@@ -143,7 +143,7 @@ export default {
                 case 'files': return 'All Files'
                 case 'tree': return 'Explorer'
                 case 'folder': return this.explorerSelectedFolder ? this.explorerSelectedFolder.name : 'Explorer'
-                case 'filecov': return this.explorerSelectedFile ? this.explorerSelectedFile.name : 'File Coverage'
+                case 'filecov': return this.explorerSelectedFile ? this.explorerSelectedFile.relativePath : 'File Coverage'
                 case 'routes': return 'Route Coverage'
                 default: return 'Dashboard'
             }
@@ -177,16 +177,14 @@ export default {
                 })
             } else if (this.view === 'filecov' && this.explorerSelectedFile) {
                 crumbs.push({ label: 'Explorer', action: () => this.navigate('tree') })
-                const parts = this.explorerSelectedFile.relativePath.split('/')
-                parts.forEach(p => {
-                    crumbs.push({ label: p })
-                })
+                crumbs.push({ label: this.explorerSelectedFile.name })
             }
             return crumbs
         },
     },
     mounted() {
         setFavicon(null)
+        window.addEventListener('popstate', this.onPopState)
         if (this.autoLoad) {
             this.$nextTick(() => {
                 this.autoLoadProfile()
@@ -197,6 +195,9 @@ export default {
                 this.loadRouteCoverage()
             }
         }
+    },
+    beforeUnmount() {
+        window.removeEventListener('popstate', this.onPopState)
     },
     methods: {
         covClass,
@@ -216,6 +217,7 @@ export default {
                 this.loaded = true
                 this.view = 'dashboard'
                 setFavicon(coverData.totalCoverage)
+                history.replaceState(this.getViewState(), '', '')
 
                 const inlineRouteData = await resolveInlineRouteCoverage()
                 if (inlineRouteData) {
@@ -249,21 +251,25 @@ export default {
             }
             this.loaded = true
             this.view = 'dashboard'
+            history.replaceState(this.getViewState(), '', '')
         },
         navigate(view) {
             this.view = view
             this.explorerInitPath = ''
             this.explorerSelectedFile = null
             this.explorerSelectedFolder = null
+            this.pushHistory()
         },
         openPackage(pkg) {
             this.view = 'tree'
             this.explorerInitPath = pkg.name
+            this.pushHistory()
         },
         openFile(file) {
             this.explorerSelectedFile = file
             this.view = 'filecov'
             this.explorerInitPath = file.relativePath
+            this.pushHistory()
         },
         onExplorerViewChange({ view, node, file }) {
             this.view = view
@@ -272,6 +278,41 @@ export default {
                 this.explorerSelectedFile = null
             } else if (view === 'filecov') {
                 this.explorerSelectedFile = file
+            }
+            this.pushHistory()
+        },
+        getViewState() {
+            return {
+                view: this.view,
+                explorerInitPath: this.explorerInitPath,
+                filePath: this.explorerSelectedFile?.relativePath || '',
+                folderPath: this.explorerSelectedFolder?.path || '',
+            }
+        },
+        pushHistory() {
+            history.pushState(this.getViewState(), '', '')
+        },
+        onPopState(event) {
+            if (!this.loaded) return
+            const state = event.state
+            if (!state) {
+                this.view = 'dashboard'
+                this.explorerInitPath = ''
+                this.explorerSelectedFile = null
+                this.explorerSelectedFolder = null
+                return
+            }
+            this.view = state.view || 'dashboard'
+            this.explorerInitPath = state.explorerInitPath || ''
+            if (state.filePath && this.coverData) {
+                this.explorerSelectedFile = this.coverData.fileList.find(f => f.relativePath === state.filePath) || null
+            } else {
+                this.explorerSelectedFile = null
+            }
+            if (state.folderPath && this.coverData) {
+                this.explorerSelectedFolder = findTreeNode(this.coverData.tree, state.folderPath) || null
+            } else {
+                this.explorerSelectedFolder = null
             }
         },
     },

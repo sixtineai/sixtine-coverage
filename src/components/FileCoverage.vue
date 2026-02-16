@@ -1,6 +1,5 @@
 <template>
     <div class="file-cov-header">
-        <h3><span class="material-icons-round">code</span> {{ file.name }}</h3>
         <div class="file-cov-meta">
             <span class="cov-badge cov-badge-lg" :class="covClass(file.coverage)">{{
                 file.coverage.toFixed(1) }}%</span>

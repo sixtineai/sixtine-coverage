@@ -48,7 +48,7 @@ export default {
             return this.node.file.coverage.toFixed(0)
         },
         indent() {
-            return { paddingLeft: (this.depth * 16) + 'px' }
+            return { paddingLeft: (this.depth * 13) + 'px' }
         },
         filteredChildren() {
             return this.node.children || []
@@ -82,7 +82,7 @@ export default {
 .tree-item {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
     padding: 5px 8px;
     cursor: pointer;
     font-size: 13px;
@@ -153,6 +153,6 @@ export default {
 }
 
 .tree-children {
-    padding-left: 16px;
+    padding-left: 0;
 }
 </style>

@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("demo worker started")
 	for _, task := range []string{"sync-tenants", "refresh-cache", "emit-metrics"} {
 		_ = runTask(task)
 	}
