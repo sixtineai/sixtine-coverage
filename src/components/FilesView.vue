@@ -2,11 +2,11 @@
     <div class="content">
         <div class="search-bar">
             <div class="search-wrapper">
-                <span class="material-icons-round search-icon">search</span>
+                <Icon name="search" class="search-icon" />
                 <input v-model="fileSearch" placeholder="Search files..." class="search-input">
             </div>
             <button class="btn btn-outline btn-sm" @click="toggleSort">
-                <span class="material-icons-round sort-btn-icon">sort</span>
+                <Icon name="sort" class="sort-btn-icon" />
                 Sort: {{ sortLabel }}
             </button>
         </div>
@@ -30,7 +30,7 @@
                         @click="$emit('open-file', file)">
                         <td>
                             <div class="file-name">
-                                <span class="material-icons-round">description</span>
+                                <Icon name="description" />
                                 <span :title="file.path">{{ file.relativePath }}</span>
                             </div>
                         </td>
@@ -47,7 +47,7 @@
                 </tbody>
             </table>
             <div v-if="filteredFiles.length === 0" class="empty-state">
-                <span class="material-icons-round">search_off</span>
+                <Icon name="search_off" />
                 <h3>No files match your search</h3>
             </div>
         </div>
@@ -56,9 +56,11 @@
 
 <script>
 import { covClass } from '@/utils/coverage'
+import Icon from '@/components/Icon.vue'
 
 export default {
     name: 'FilesView',
+    components: { Icon },
     props: {
         files: { type: Array, required: true },
     },

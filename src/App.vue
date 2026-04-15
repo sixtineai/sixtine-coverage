@@ -18,17 +18,17 @@
                 <div class="nav-section">
                     <div class="nav-section-title">Navigation</div>
                     <div class="nav-item" :class="{ active: view === 'dashboard' }" @click="navigate('dashboard')">
-                        <span class="material-icons-round">dashboard</span> Dashboard
+                        <Icon name="dashboard" /> Dashboard
                     </div>
                     <div class="nav-item" :class="{ active: view === 'files' }" @click="navigate('files')">
-                        <span class="material-icons-round">description</span> Files
+                        <Icon name="description" /> Files
                         <span class="badge">{{ coverData.fileList.length }}</span>
                     </div>
                     <div class="nav-item" :class="{ active: isExplorerActive }" @click="navigate('tree')">
-                        <span class="material-icons-round">account_tree</span> Explorer
+                        <Icon name="account_tree" /> Explorer
                     </div>
                     <div v-if="hasRouteCoverage" class="nav-item" :class="{ active: view === 'routes' }" @click="navigate('routes')">
-                        <span class="material-icons-round">alt_route</span> Routes
+                        <Icon name="alt_route" /> Routes
                         <span class="badge">{{ routeData.coveredRoutes }}/{{ routeData.totalRoutes }}</span>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                 <div class="nav-section">
                     <div class="nav-section-title">Config</div>
                     <div class="nav-item" @click="loaded = false">
-                        <span class="material-icons-round">settings</span> Change Profile
+                        <Icon name="settings" /> Change Profile
                     </div>
                 </div>
             </nav>
@@ -85,10 +85,10 @@
             <div class="topbar">
                 <div class="topbar-left">
                     <button class="burger-btn" @click="sidebarOpen = !sidebarOpen">
-                        <span class="material-icons-round">menu</span>
+                        <Icon name="menu" />
                     </button>
                     <h2>
-                        <span class="material-icons-round">{{ viewIcon }}</span>
+                        <Icon :name="viewIcon" />
                         {{ viewTitle }}
                     </h2>
                 </div>
@@ -125,6 +125,7 @@ import { parseRouteCoverage } from '@/utils/routeCoverage'
 import { resolveInlineCoverage, resolveInlineRouteCoverage } from '@/utils/data'
 import { setFavicon } from '@/utils/favicon'
 import config from '@/config'
+import Icon from '@/components/Icon.vue'
 import ConfigScreen from '@/components/ConfigScreen.vue'
 import DashboardView from '@/components/DashboardView.vue'
 import FilesView from '@/components/FilesView.vue'
@@ -133,7 +134,7 @@ import RouteCoverageView from '@/components/RouteCoverageView.vue'
 
 export default {
     name: 'App',
-    components: { ConfigScreen, DashboardView, FilesView, TreeExplorer, RouteCoverageView },
+    components: { Icon, ConfigScreen, DashboardView, FilesView, TreeExplorer, RouteCoverageView },
     data() {
         return {
             loaded: false,
@@ -440,7 +441,7 @@ export default {
     font-weight: 500;
 }
 
-.nav-item .material-icons-round {
+.nav-item .icon {
     font-size: 19px;
 }
 
@@ -493,7 +494,7 @@ export default {
     gap: 8px;
 }
 
-.topbar h2 .material-icons-round {
+.topbar h2 .icon {
     font-size: 20px;
     color: var(--teal);
 }
@@ -572,7 +573,7 @@ export default {
     background: #f1f5f9;
 }
 
-.burger-btn .material-icons-round {
+.burger-btn .icon {
     font-size: 22px;
 }
 

@@ -4,10 +4,10 @@
             <div class="tree-search">
                 <input v-model="treeSearch" placeholder="Filter files...">
                 <button class="tree-action-btn" @click="expandAll" title="Expand All">
-                    <span class="material-icons-round">unfold_more</span>
+                    <Icon name="unfold_more" />
                 </button>
                 <button class="tree-action-btn" @click="collapseAll" title="Collapse All">
-                    <span class="material-icons-round">unfold_less</span>
+                    <Icon name="unfold_less" />
                 </button>
             </div>
             <div class="tree-nodes">
@@ -30,11 +30,12 @@
 import TreeNode from '@/components/TreeNode.vue'
 import FileCoverage from '@/components/FileCoverage.vue'
 import FolderView from '@/components/FolderView.vue'
+import Icon from '@/components/Icon.vue'
 import { filterTreeNodes, findTreeNode } from '@/utils/coverage'
 
 export default {
     name: 'TreeExplorer',
-    components: { TreeNode, FileCoverage, FolderView },
+    components: { TreeNode, FileCoverage, FolderView, Icon },
     props: {
         tree: { type: Array, required: true },
         sourceRoot: { type: String, default: '' },
@@ -175,7 +176,7 @@ export default {
     color: var(--text-primary);
 }
 
-.tree-action-btn .material-icons-round {
+.tree-action-btn .icon {
     font-size: 16px;
 }
 

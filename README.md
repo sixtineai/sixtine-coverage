@@ -1,6 +1,6 @@
 # sixtine-coverage
 
-A self-contained, interactive Go coverage dashboard. Feed it a `cover.out` file and get a browsable HTML report with per-file highlighting, folder drill-down, and optional HTTP route coverage.
+A self-contained, interactive Go coverage dashboard. Feed it a `cover.out` file and get a browsable single file HTML5 report with per-file highlighting, folder drill-down, and optional HTTP route coverage.
 
 ## Quickstart
 
