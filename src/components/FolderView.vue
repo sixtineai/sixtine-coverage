@@ -60,11 +60,9 @@
 
 <script>
 import { covClass } from '@/utils/coverage'
-import Icon from '@/components/Icon.vue'
 
 export default {
     name: 'FolderView',
-    components: { Icon },
     props: {
         folder: { type: Object, default: null },
     },

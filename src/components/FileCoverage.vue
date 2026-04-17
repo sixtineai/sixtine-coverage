@@ -65,11 +65,9 @@
 <script>
 import { covClass } from '@/utils/coverage'
 import { getCodeFilesMap, hasInlineCodeFilesMap } from '@/utils/data'
-import Icon from '@/components/Icon.vue'
 
 export default {
     name: 'FileCoverage',
-    components: { Icon },
     props: {
         file: { type: Object, required: true },
         sourceRoot: { type: String, default: '' },

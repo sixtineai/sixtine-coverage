@@ -88,7 +88,7 @@
                         <Icon name="menu" />
                     </button>
                     <h2>
-                        <Icon :name="viewIcon" />
+                        <span class="material-icons-round">{{ viewIcon }}</span>
                         {{ viewTitle }}
                     </h2>
                 </div>
@@ -125,7 +125,6 @@ import { parseRouteCoverage } from '@/utils/routeCoverage'
 import { resolveInlineCoverage, resolveInlineRouteCoverage } from '@/utils/data'
 import { setFavicon } from '@/utils/favicon'
 import config from '@/config'
-import Icon from '@/components/Icon.vue'
 import ConfigScreen from '@/components/ConfigScreen.vue'
 import DashboardView from '@/components/DashboardView.vue'
 import FilesView from '@/components/FilesView.vue'
@@ -134,7 +133,7 @@ import RouteCoverageView from '@/components/RouteCoverageView.vue'
 
 export default {
     name: 'App',
-    components: { Icon, ConfigScreen, DashboardView, FilesView, TreeExplorer, RouteCoverageView },
+    components: { ConfigScreen, DashboardView, FilesView, TreeExplorer, RouteCoverageView },
     data() {
         return {
             loaded: false,
@@ -441,7 +440,7 @@ export default {
     font-weight: 500;
 }
 
-.nav-item .icon {
+.nav-item .material-icons-round {
     font-size: 19px;
 }
 
@@ -494,7 +493,7 @@ export default {
     gap: 8px;
 }
 
-.topbar h2 .icon {
+.topbar h2 .material-icons-round {
     font-size: 20px;
     color: var(--teal);
 }
@@ -573,7 +572,7 @@ export default {
     background: #f1f5f9;
 }
 
-.burger-btn .icon {
+.burger-btn .material-icons-round {
     font-size: 22px;
 }
 

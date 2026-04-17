@@ -9,7 +9,7 @@
                     statements</div>
             </div>
             <div class="card stat-card blue">
-                <div class="stat-icon"><Icon name="inventory_2" /></div>
+                <div class="stat-icon"><span class="material-icons-round">inventory_2</span></div>
                 <div class="stat-label">Packages</div>
                 <div class="stat-value">{{ coverData.packageList.length }}</div>
                 <div class="stat-detail">Go packages analyzed</div>
@@ -40,11 +40,9 @@
 
 <script>
 import { covClass, covColor } from '@/utils/coverage'
-import Icon from '@/components/Icon.vue'
 
 export default {
     name: 'DashboardView',
-    components: { Icon },
     props: {
         coverData: { type: Object, required: true },
     },

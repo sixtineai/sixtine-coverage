@@ -132,11 +132,9 @@
 <script>
 import { covColor } from '@/utils/coverage'
 import { routeCovClass, httpMethodClass, statusCodeClass } from '@/utils/routeCoverage'
-import Icon from '@/components/Icon.vue'
 
 export default {
     name: 'RouteCoverageView',
-    components: { Icon },
     props: {
         routeData: { type: Object, required: true },
     },

@@ -56,11 +56,9 @@
 
 <script>
 import { covClass } from '@/utils/coverage'
-import Icon from '@/components/Icon.vue'
 
 export default {
     name: 'FilesView',
-    components: { Icon },
     props: {
         files: { type: Array, required: true },
     },

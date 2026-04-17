@@ -28,7 +28,7 @@
             <div class="load-actions">
                 <button class="btn btn-primary" @click="load" :disabled="loading">
                     <span v-if="loading" class="spinner spinner-sm"></span>
-                    <Icon v-else name="play_arrow" />
+                    <span class="material-icons-round" v-else>play_arrow</span>
                     {{ loading ? 'Loading...' : 'Load Coverage' }}
                 </button>
             </div>
@@ -39,11 +39,9 @@
 
 <script>
 import { parseCoverProfile, buildCoverData } from '@/utils/coverage'
-import Icon from '@/components/Icon.vue'
 
 export default {
     name: 'ConfigScreen',
-    components: { Icon },
     props: {
         initialProfileUrl: { type: String, default: './cover.out' },
         initialSourceRoot: { type: String, default: '' },

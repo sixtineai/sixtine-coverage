@@ -1,10 +1,11 @@
 <template>
     <div>
         <div class="tree-item" :class="{ active: isSelected }" :style="indent" @click="toggle">
-            <Icon v-if="isFolder" name="chevron_right" class="chevron" :class="{ open: expanded }" />
+            <span v-if="isFolder" class="material-icons-round chevron" :class="{ open: expanded }">chevron_right</span>
             <span v-else class="spacer"></span>
-            <Icon v-if="isFolder" :name="expanded ? 'folder_open' : 'folder'" class="folder-icon" />
-            <Icon v-else name="description" class="file-icon" />
+            <span v-if="isFolder" class="material-icons-round folder-icon">{{ expanded ? 'folder_open' : 'folder'
+                }}</span>
+            <span v-else class="material-icons-round file-icon">description</span>
             <span class="node-name" :title="node.name">{{ node.name }}</span>
             <span class="cov-mini" :class="covCls">{{ covPct }}%</span>
         </div>
@@ -18,11 +19,9 @@
 
 <script>
 import { covClass } from '@/utils/coverage'
-import Icon from '@/components/Icon.vue'
 
 export default {
     name: 'TreeNode',
-    components: { Icon },
     props: {
         node: { type: Object, required: true },
         depth: { type: Number, default: 0 },
@@ -125,7 +124,7 @@ export default {
     color: #0369a1;
 }
 
-.tree-item .icon {
+.tree-item .material-icons-round {
     font-size: 16px;
     flex-shrink: 0;
 }

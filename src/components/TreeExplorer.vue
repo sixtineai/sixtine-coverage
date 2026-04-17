@@ -30,12 +30,11 @@
 import TreeNode from '@/components/TreeNode.vue'
 import FileCoverage from '@/components/FileCoverage.vue'
 import FolderView from '@/components/FolderView.vue'
-import Icon from '@/components/Icon.vue'
 import { filterTreeNodes, findTreeNode } from '@/utils/coverage'
 
 export default {
     name: 'TreeExplorer',
-    components: { TreeNode, FileCoverage, FolderView, Icon },
+    components: { TreeNode, FileCoverage, FolderView },
     props: {
         tree: { type: Array, required: true },
         sourceRoot: { type: String, default: '' },
@@ -176,7 +175,7 @@ export default {
     color: var(--text-primary);
 }
 
-.tree-action-btn .icon {
+.tree-action-btn .material-icons-round {
     font-size: 16px;
 }
 
