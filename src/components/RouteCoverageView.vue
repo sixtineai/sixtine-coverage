@@ -3,25 +3,25 @@
         <!-- Dashboard cards -->
         <div class="card-grid">
             <div class="card stat-card" :class="routeCovClass(routeData.coveragePercent)">
-                <div class="stat-icon"><Icon name="alt_route" /></div>
+                <div class="stat-icon"><span class="material-icons-round">alt_route</span></div>
                 <div class="stat-label">Route Coverage</div>
                 <div class="stat-value">{{ routeData.coveragePercent.toFixed(1) }}%</div>
                 <div class="stat-detail">{{ routeData.coveredRoutes }}/{{ routeData.totalRoutes }} routes covered</div>
             </div>
             <div class="card stat-card blue">
-                <div class="stat-icon"><Icon name="send" /></div>
+                <div class="stat-icon"><span class="material-icons-round">send</span></div>
                 <div class="stat-label">Total Calls</div>
                 <div class="stat-value">{{ totalCalls }}</div>
                 <div class="stat-detail">HTTP requests recorded</div>
             </div>
             <div class="card stat-card purple">
-                <div class="stat-icon"><Icon name="dns" /></div>
+                <div class="stat-icon"><span class="material-icons-round">dns</span></div>
                 <div class="stat-label">Services</div>
                 <div class="stat-value">{{ routeData.services.length }}</div>
                 <div class="stat-detail">API service tags</div>
             </div>
             <div class="card stat-card" :class="uncoveredRoutes.length === 0 ? 'green' : 'red'">
-                <div class="stat-icon"><Icon name="report_off" /></div>
+                <div class="stat-icon"><span class="material-icons-round">report_off</span></div>
                 <div class="stat-label">Uncovered</div>
                 <div class="stat-value">{{ uncoveredRoutes.length }}</div>
                 <div class="stat-detail">routes with no test calls</div>
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Service breakdown -->
-        <div class="section-title"><Icon name="apps" /> Coverage by Service</div>
+        <div class="section-title"><span class="material-icons-round">apps</span> Coverage by Service</div>
         <div class="card-grid service-grid">
             <div v-for="svc in sortedServices" :key="svc.name" class="card pkg-card">
                 <div class="pkg-name" :title="svc.name">{{ svc.name }}</div>
@@ -43,10 +43,10 @@
         </div>
 
         <!-- Routes table -->
-        <div class="section-title"><Icon name="list" /> Covered Routes</div>
+        <div class="section-title"><span class="material-icons-round">list</span> Covered Routes</div>
         <div class="search-bar">
             <div class="search-wrapper">
-                <Icon name="search" class="search-icon" />
+                <span class="material-icons-round search-icon">search</span>
                 <input v-model="search" placeholder="Search routes..." class="search-input">
             </div>
             <select v-model="methodFilter" class="route-select">
@@ -97,14 +97,14 @@
                 </tbody>
             </table>
             <div v-if="filteredRoutes.length === 0" class="empty-state">
-                <Icon name="search_off" />
+                <span class="material-icons-round">search_off</span>
                 <h3>No routes match your filter</h3>
             </div>
         </div>
 
         <!-- Uncovered routes -->
         <div v-if="uncoveredRoutes.length > 0" class="uncovered-section">
-            <div class="section-title"><Icon name="report_off" /> Uncovered Routes</div>
+            <div class="section-title"><span class="material-icons-round">report_off</span> Uncovered Routes</div>
             <div class="card table-card">
                 <table class="data-table">
                     <thead>
@@ -290,7 +290,7 @@ export default {
     border-radius: 4px;
     font-size: 11px;
     font-weight: 700;
-    font-family: 'SFMono-Regular', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-family: 'JetBrains Mono', monospace;
     min-width: 52px;
     text-align: center;
 }
@@ -339,7 +339,7 @@ export default {
     border-radius: 99px;
     font-size: 11px;
     font-weight: 600;
-    font-family: 'SFMono-Regular', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .status-count {
@@ -394,7 +394,7 @@ export default {
     border-radius: 99px;
     font-size: 12px;
     font-weight: 700;
-    font-family: 'SFMono-Regular', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-family: 'JetBrains Mono', monospace;
     min-width: 32px;
 }
 

@@ -1,25 +1,25 @@
 <template>
     <div v-if="folder">
         <div class="file-cov-header">
-            <h3><Icon name="folder" /> {{ folder.name }}</h3>
+            <h3><span class="material-icons-round">folder</span> {{ folder.name }}</h3>
             <div class="text-sm text-muted">{{ folder.allFiles.length }} files &middot; {{ folder.totalStatements }}
                 statements</div>
         </div>
         <div class="card-grid folder-stats">
             <div class="card stat-card" :class="covClass(folder.coverage)">
-                <div class="stat-icon"><Icon name="verified" /></div>
+                <div class="stat-icon"><span class="material-icons-round">verified</span></div>
                 <div class="stat-label">Folder Coverage</div>
                 <div class="stat-value">{{ folder.coverage.toFixed(1) }}%</div>
                 <div class="stat-detail">{{ folder.coveredStatements }}/{{ folder.totalStatements }} statements</div>
             </div>
             <div class="card stat-card blue">
-                <div class="stat-icon"><Icon name="description" /></div>
+                <div class="stat-icon"><span class="material-icons-round">description</span></div>
                 <div class="stat-label">Files</div>
                 <div class="stat-value">{{ folder.allFiles.length }}</div>
                 <div class="stat-detail">in this directory</div>
             </div>
         </div>
-        <div class="section-title"><Icon name="list" /> Files in folder</div>
+        <div class="section-title"><span class="material-icons-round">list</span> Files in folder</div>
         <div class="card table-card">
             <table class="data-table">
                 <thead>
@@ -34,7 +34,7 @@
                     <tr v-for="f in folder.allFiles" :key="f.path" class="clickable-row"
                         @click="$emit('open-file', f)">
                         <td>
-                            <div class="file-name"><Icon name="description" /> {{ f.name }}
+                            <div class="file-name"><span class="material-icons-round">description</span> {{ f.name }}
                             </div>
                         </td>
                         <td><span class="cov-badge" :class="covClass(f.coverage)">{{ f.coverage.toFixed(1) }}%</span>
@@ -52,7 +52,7 @@
         </div>
     </div>
     <div v-else class="empty-state">
-        <Icon name="account_tree" />
+        <span class="material-icons-round">account_tree</span>
         <h3>Select a folder or file</h3>
         <p class="text-sm text-muted">Navigate the tree on the left to view coverage details</p>
     </div>

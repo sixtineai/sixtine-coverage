@@ -158,7 +158,7 @@ export default {
     border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 14px;
-    font-family: 'SFMono-Regular', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-family: 'JetBrains Mono', monospace;
     outline: none;
     background: #f8fafc;
 }

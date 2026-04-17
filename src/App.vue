@@ -18,17 +18,17 @@
                 <div class="nav-section">
                     <div class="nav-section-title">Navigation</div>
                     <div class="nav-item" :class="{ active: view === 'dashboard' }" @click="navigate('dashboard')">
-                        <Icon name="dashboard" /> Dashboard
+                        <span class="material-icons-round">dashboard</span> Dashboard
                     </div>
                     <div class="nav-item" :class="{ active: view === 'files' }" @click="navigate('files')">
-                        <Icon name="description" /> Files
+                        <span class="material-icons-round">description</span> Files
                         <span class="badge">{{ coverData.fileList.length }}</span>
                     </div>
                     <div class="nav-item" :class="{ active: isExplorerActive }" @click="navigate('tree')">
-                        <Icon name="account_tree" /> Explorer
+                        <span class="material-icons-round">account_tree</span> Explorer
                     </div>
                     <div v-if="hasRouteCoverage" class="nav-item" :class="{ active: view === 'routes' }" @click="navigate('routes')">
-                        <Icon name="alt_route" /> Routes
+                        <span class="material-icons-round">alt_route</span> Routes
                         <span class="badge">{{ routeData.coveredRoutes }}/{{ routeData.totalRoutes }}</span>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                 <div class="nav-section">
                     <div class="nav-section-title">Config</div>
                     <div class="nav-item" @click="loaded = false">
-                        <Icon name="settings" /> Change Profile
+                        <span class="material-icons-round">settings</span> Change Profile
                     </div>
                 </div>
             </nav>
@@ -85,7 +85,7 @@
             <div class="topbar">
                 <div class="topbar-left">
                     <button class="burger-btn" @click="sidebarOpen = !sidebarOpen">
-                        <Icon name="menu" />
+                        <span class="material-icons-round">menu</span>
                     </button>
                     <h2>
                         <span class="material-icons-round">{{ viewIcon }}</span>

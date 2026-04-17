@@ -2,11 +2,11 @@
     <div class="content">
         <div class="search-bar">
             <div class="search-wrapper">
-                <Icon name="search" class="search-icon" />
+                <span class="material-icons-round search-icon">search</span>
                 <input v-model="fileSearch" placeholder="Search files..." class="search-input">
             </div>
             <button class="btn btn-outline btn-sm" @click="toggleSort">
-                <Icon name="sort" class="sort-btn-icon" />
+                <span class="material-icons-round sort-btn-icon">sort</span>
                 Sort: {{ sortLabel }}
             </button>
         </div>
@@ -30,7 +30,7 @@
                         @click="$emit('open-file', file)">
                         <td>
                             <div class="file-name">
-                                <Icon name="description" />
+                                <span class="material-icons-round">description</span>
                                 <span :title="file.path">{{ file.relativePath }}</span>
                             </div>
                         </td>
@@ -47,7 +47,7 @@
                 </tbody>
             </table>
             <div v-if="filteredFiles.length === 0" class="empty-state">
-                <Icon name="search_off" />
+                <span class="material-icons-round">search_off</span>
                 <h3>No files match your search</h3>
             </div>
         </div>

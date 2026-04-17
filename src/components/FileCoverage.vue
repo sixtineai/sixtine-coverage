@@ -22,11 +22,11 @@
         <div class="block-mode-toggle">
             <button class="btn btn-sm" :class="blockViewMode === 'visual' ? 'btn-primary' : 'btn-outline'"
                 @click="blockViewMode = 'visual'">
-                <Icon name="view_week" class="btn-icon" /> Visual Map
+                <span class="material-icons-round btn-icon">view_week</span> Visual Map
             </button>
             <button class="btn btn-sm" :class="blockViewMode === 'list' ? 'btn-primary' : 'btn-outline'"
                 @click="blockViewMode = 'list'">
-                <Icon name="list" class="btn-icon" /> Block List
+                <span class="material-icons-round btn-icon">list</span> Block List
             </button>
         </div>
 
@@ -234,7 +234,7 @@ export default {
 }
 
 .file-cov-blocks {
-    font-family: 'SFMono-Regular', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     line-height: 1.7;
     border-radius: var(--radius);
@@ -320,7 +320,7 @@ export default {
 }
 
 .block-item .block-lines {
-    font-family: 'SFMono-Regular', 'Cascadia Code', 'Fira Code', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 500;
     min-width: 100px;
 }

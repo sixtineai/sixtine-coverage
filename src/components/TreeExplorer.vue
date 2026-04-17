@@ -4,10 +4,10 @@
             <div class="tree-search">
                 <input v-model="treeSearch" placeholder="Filter files...">
                 <button class="tree-action-btn" @click="expandAll" title="Expand All">
-                    <Icon name="unfold_more" />
+                    <span class="material-icons-round">unfold_more</span>
                 </button>
                 <button class="tree-action-btn" @click="collapseAll" title="Collapse All">
-                    <Icon name="unfold_less" />
+                    <span class="material-icons-round">unfold_less</span>
                 </button>
             </div>
             <div class="tree-nodes">
